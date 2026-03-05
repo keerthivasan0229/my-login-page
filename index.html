@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login & Register</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#f2f2f2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+    box-shadow:0 0 10px gray;
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#4CAF50;
+    color:white;
+    border:none;
+}
+
+.link{
+    text-align:center;
+    margin-top:10px;
+    cursor:pointer;
+    color:blue;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<!-- REGISTER FORM -->
+<div id="registerForm">
+<h2>Register</h2>
+
+<input type="text" id="regUser" placeholder="Username">
+<input type="password" id="regPass" placeholder="Password">
+
+<button onclick="register()">Register</button>
+
+<div class="link" onclick="showLogin()">Already have account? Login</div>
+</div>
+
+
+<!-- LOGIN FORM -->
+<div id="loginForm" style="display:none">
+
+<h2>Login</h2>
+
+<input type="text" id="loginUser" placeholder="Username">
+<input type="password" id="loginPass" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<div class="link" onclick="showRegister()">Create account</div>
+
+</div>
+
+</div>
+
+<script>
+
+let savedUser="";
+let savedPass="";
+
+function showLogin(){
+    document.getElementById("registerForm").style.display="none";
+    document.getElementById("loginForm").style.display="block";
+}
+
+function showRegister(){
+    document.getElementById("loginForm").style.display="none";
+    document.getElementById("registerForm").style.display="block";
+}
+
+function register(){
+
+let user=document.getElementById("regUser").value;
+let pass=document.getElementById("regPass").value;
+
+if(user=="" || pass==""){
+alert("Please fill all fields");
+return;
+}
+
+savedUser=user;
+savedPass=pass;
+
+alert("Registered Successfully");
+
+showLogin();
+}
+
+function login(){
+
+let user=document.getElementById("loginUser").value;
+let pass=document.getElementById("loginPass").value;
+
+if(user!==savedUser || pass!==savedPass){
+alert("Please signup first or incorrect login");
+return;
+}
+
+alert("Welcome "+user+" 🎉");
+
+}
+
+</script>
+
+</body>
+</html>
